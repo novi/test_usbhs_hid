@@ -223,8 +223,8 @@ USBHub     Hub(&Usb);
 USBHub     Hub2(&Usb);
 
 HIDBoot < USB_HID_PROTOCOL_KEYBOARD | USB_HID_PROTOCOL_MOUSE > HidComposite0(&Usb);
-HIDBoot < USB_HID_PROTOCOL_KEYBOARD | USB_HID_PROTOCOL_MOUSE > HidComposite1(&Usb);
-HIDBoot<USB_HID_PROTOCOL_KEYBOARD>    HidKeyboard(&Usb);
+// HIDBoot < USB_HID_PROTOCOL_KEYBOARD | USB_HID_PROTOCOL_MOUSE > HidComposite1(&Usb);
+// HIDBoot<USB_HID_PROTOCOL_KEYBOARD>    HidKeyboard(&Usb);
 HIDBoot<USB_HID_PROTOCOL_MOUSE>    HidMouse(&Usb);
 
 KbdRptParser KbdPrs;
@@ -257,9 +257,10 @@ void setup()
 
   HidComposite0.SetReportParser(1, &KbdPrs);
   HidComposite0.SetReportParser(0, &MousePrs);
-  HidComposite1.SetReportParser(0, &KbdPrs);
-  HidComposite1.SetReportParser(1, &MousePrs);
-  HidKeyboard.SetReportParser(0, &KbdPrs);
+
+  // HidComposite1.SetReportParser(1, &KbdPrs);
+  // HidComposite1.SetReportParser(0, &MousePrs);
+  // HidKeyboard.SetReportParser(0, &KbdPrs);
   HidMouse.SetReportParser(0, &MousePrs);
 
   Serial.println("Start2");
